@@ -1,11 +1,10 @@
 const User = require('../Models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 exports.signup = async (req,res) => {
     try {
         const {username,account_type,password,confirmPassword} = req.body;
-
         if(!username || !account_type || !password || !confirmPassword)
         {
             return res.status(404).json({
@@ -57,8 +56,8 @@ exports.signin = async (req,res) => {
         }
 
 
-        const details = await Admin.findOne({username : username});
-
+        const details = await User.findOne({username : username});
+        // console.log(details);
         if(!details) {
             return res.status(401).json({
                 success : false,

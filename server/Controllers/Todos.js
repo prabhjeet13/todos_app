@@ -4,7 +4,7 @@ exports.addTodo = async (req,res) =>  {
     try {
         const {title , description} = req.body;
 
-        if(!title || !desctiption)
+        if(!title || !description)
             {
                 return res.status(404).json({
                     success: false,
@@ -79,7 +79,7 @@ exports.deleteTodoById = async (req,res) =>  {
             })
         }
 
-        await Todo.findByIdAndDelete(userId);
+        await Todo.findByIdAndDelete(todoId);
 
         return res.status(200).json({
             success: true,
@@ -130,7 +130,7 @@ exports.getTodoById = async (req,res) =>  {
 
         return res.status(200).json({
             success: true,
-            message : 'fetch all todos',
+            message : 'fetch todo done',
             todo,
         })
 
